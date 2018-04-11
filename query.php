@@ -1,7 +1,8 @@
 <?php 
 
-/* Previous Query */ 
-
+/* 
+ * Previous Query 
+ */ 
 "SELECT SQL_CALC_FOUND_ROWS   
   listings.id, listings.slug, listings.token, listings.name, listings.address_1, listings.capacity ,     listings.city, listings.price, listings.status, listings.venue_type_id, user_favourites.favourite_id, 
   (SELECT ROUND(SUM((
@@ -27,8 +28,9 @@ LEFT JOIN user_favourites
 HAVING listings.status = 1 
 ORDER BY image_count DESC LIMIT 0,8"
 
-/* Optimised Query  */ 
-
+/* 
+ * Optimised Query  
+ */ 
 "SELECT l.id,  l.slug,  l.token, l.name, l.address_1, l.capacity, l.city, l.price, l.status, l.venue_type_id, 
    ROUND(
         (SUM(lr.comfort_rating + lr.location_rating + lr.facility_rating + lr.value_rating) / 4)
